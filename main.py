@@ -24,7 +24,7 @@ startIndex = rna.find(initiatorCodonSequence)
 
 sequenceIndex = 0
 # Si la position de depart est trouvé
-if startIndex:
+if startIndex > 0:
   # Affichage du codon de départ, et sa position
   print("Position of the Initiator Codon \"%s\" : %s." %(initiatorCodonSequence, startIndex))
 
@@ -63,5 +63,5 @@ if startIndex:
             break
 else:
   # Si pas de codon de départ, on affiche un message
-  print("There is no initiator codon.")
+  exit("There is no initiator codon.")
 
