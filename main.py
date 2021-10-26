@@ -10,7 +10,7 @@ from geneticCode import shortname_to_longname_map as s_to_l_map
 # Codon de démarrage :
 initiatorCodonSequence = "AUG"
 # Longeur de sequence
-codonSequenceLenth = len(initiatorCodonSequence)
+codonSequenceLength = len(initiatorCodonSequence)
 
 # Saisie de la séquence à convertir :
 rna = input("Please enter your RNA sequence?\n")
@@ -23,8 +23,9 @@ print("Loaded RNA sequence: \"%s\", length: %s. \n" %(rna,rnaLenth))
 startIndex = rna.find(initiatorCodonSequence)
 
 sequenceIndex = 0
+print(startIndex)
 # Si la position de depart est trouvé
-if startIndex > 0:
+if startIndex >= 0:
   # Affichage du codon de départ, et sa position
   print("Position of the Initiator Codon \"%s\": %s." %(initiatorCodonSequence, startIndex))
 
@@ -34,19 +35,24 @@ if startIndex > 0:
   stopLoop = False
   # proteinsList sert à stocker la liste des proteins
   proteinsList = ""
+  # proteinsList2= ""
   # Tant que la position de la sequence courante, ne dépasse pas la longeur de la chaine ARN, et que le boolean est à false
   while (sequenceIndex < rnaLenth) and stopLoop == False :
     # valeur actuelle du codon stocké dans 'currentCodon'
-    currentCodon = rna[sequenceIndex:sequenceIndex+codonSequenceLenth]
+    currentCodon = rna[sequenceIndex:sequenceIndex+codonSequenceLength]
     # On incrémente la position avec la longueur du codon courant
-    sequenceIndex+=codonSequenceLenth
+    sequenceIndex = sequenceIndex + codonSequenceLength
     if currentCodon:
       # Pour chaque index de amino_acid_map (cf geneticCode.py)
+      # print(amino_acid_map.keys())
       for key in amino_acid_map.keys() :
+        # print(key)
+        # print(amino_acid_map[key])
         # Si le currentCodon est dans l'index courant :
         if currentCodon in amino_acid_map[key]:
           # On ajoute à la chaine proteinsList le codon converti, la protéine correspondante, et son abréviation. 
           proteinsList += " | " +currentCodon + " | " + s_to_l_map[key] + " ("+ key +")\n"
+          # proteinsList2 = proteinsList2 + s_to_l_map[key] + ", "
           # Si la clé est stop on arrete l'execution
           if key == "stop":
             # On force donc la sorti de la boucle while
@@ -57,6 +63,7 @@ if startIndex > 0:
             print("Converted RNA sequence : \"%s\".\n" %rna[startIndex:sequenceIndex])
             # On affiche la liste des protéines trouvées
             print("Protein list : \n%s\n" %proteinsList)
+            # print("Protein list : \n%s\n" %proteinsList2)
             # On affiche un message de fin d'exection            
             print("End of execution.\n")
             # On sort de la for
