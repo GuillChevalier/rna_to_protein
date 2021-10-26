@@ -13,11 +13,14 @@ initiatorCodonSequence = "AUG"
 codonSequenceLenth = len(initiatorCodonSequence)
 
 # Saisie de la séquence à convertir :
-rna = input("Please enter your RNA sequence?\n")
+dna = input("Please enter your ADN sequence?\n")
+print("DNA sequence: \"%s\", length: %s. \n" %(dna,len(dna)))
+# Convertion de la porton d'ADN en ARN messager
+rna = dna.replace('T','U')
 # Longeur de la séquence
 rnaLenth = len(rna)
 # Affichage de la séquence, et de sa longeur
-print("RNA sequence: \"%s\", length : %s. \n" %(rna,rnaLenth))
+print("Converted RNA sequence: \"%s\", length: %s. \n" %(rna,rnaLenth))
 
 # Trouver la position de la première occurence de 'initiatorCodonSequence' (AUG)
 startIndex = rna.find(initiatorCodonSequence)
@@ -26,7 +29,7 @@ sequenceIndex = 0
 # Si la position de depart est trouvé
 if startIndex > 0:
   # Affichage du codon de départ, et sa position
-  print("Position of the Initiator Codon \"%s\" : %s." %(initiatorCodonSequence, startIndex))
+  print("Position of the Initiator Codon \"%s\": %s." %(initiatorCodonSequence, startIndex))
 
   # On stock dans sequenceIndex la position de la séquence courante
   sequenceIndex  = startIndex
