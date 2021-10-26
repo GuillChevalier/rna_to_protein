@@ -5,7 +5,7 @@
 from geneticCode import amino_acid_map
 from geneticCode import shortname_to_longname_map as s_to_l_map
 # Sequence de test : 
-# ATTAUGCCGATACGGGGGGGGGCTATTTTATTTCCCAAUCCCCCUUAGCGAAGCUGAC
+# AUUAUGCCGAUACGGGGGGGGGCUAUUUUAUUUCCCAAUCCCCCUUAGCGAAGCUGAC
 
 # Codon de démarrage :
 initiatorCodonSequence = "AUG"
@@ -13,14 +13,11 @@ initiatorCodonSequence = "AUG"
 codonSequenceLenth = len(initiatorCodonSequence)
 
 # Saisie de la séquence à convertir :
-dna = input("Please enter your ADN sequence?\n")
-print("DNA sequence: \"%s\", length: %s. \n" %(dna,len(dna)))
-# Convertion de la porton d'ADN en ARN messager
-rna = dna.replace('T','U')
+rna = input("Please enter your RNA sequence?\n")
 # Longeur de la séquence
 rnaLenth = len(rna)
 # Affichage de la séquence, et de sa longeur
-print("Converted RNA sequence: \"%s\", length: %s. \n" %(rna,rnaLenth))
+print("Loaded RNA sequence: \"%s\", length: %s. \n" %(rna,rnaLenth))
 
 # Trouver la position de la première occurence de 'initiatorCodonSequence' (AUG)
 startIndex = rna.find(initiatorCodonSequence)
