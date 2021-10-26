@@ -1,4 +1,4 @@
-#RNA TO PROTEIN
+# RNA TO PROTEIN
 
 This script converts an RNA sequence entered by the user into a list of corresponding proteins
 
